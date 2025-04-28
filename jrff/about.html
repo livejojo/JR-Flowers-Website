@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us - JR Flowers</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+      background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/roses.png');
+      background-repeat: repeat;
+      background-size: 200px;
+    }
+
+    .content {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: 50px auto;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #d63384;
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 3px #f8c1d9;
+    }
+
+    p {
+      color: #555;
+      font-size: 17px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    nav {
+      background-color: #d63384;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #c2185b;
+      transform: scale(1.05);
+    }
+
+    /* For the language toggle button */
+    .toggle-language {
+      margin-left: 20px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .toggle-language:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="welcome.html" id="nav-welcome">Welcome</a>
+    <a href="home.html" id="nav-home">Home</a>
+    <a href="Products.html" id="nav-products">Products</a>
+    <a href="products2.html" id="nav-products">Products</a>
+    <a href="about.html" id="nav-about">About Us</a>
+    <a href="Contact.html" id="nav-contact">Contact</a>
+    <a href="cart.html" id="nav-cart">Cart</a>
+    <a href="Checkout.html" id="nav-checkout">Checkout</a>
+    <a href="Categories.html" id="nav-categories">Categories</a>
+    <a href="Offers.Html" id="nav-offers">Offers</a>
+    <a href="Gallery.html" id="nav-gallery">Gallery</a>
+    <a href="faq.html" id="nav-faq">FAQ</a>
+    <a href="TermsandConditions.html" id="nav-terms">Terms</a>
+
+    <!-- Button to toggle language -->
+    <span class="toggle-language" id="toggle-language">Change Language</span>
+  </nav>
+
+  <div class="content">
+    <h1 id="about-header">About JR Flowers</h1>
+    <p id="about-paragraph1">JR Flowers is your go-to online flower shop for premium, handcrafted floral arrangements. We believe flowers are more than just gifts — they're a form of expression, a way to show love, gratitude, and joy.</p>
+    
+    <p id="about-paragraph2">Established with love and passion for nature’s beauty, JR Flowers specializes in elegant bouquets and custom designs for every occasion — weddings, birthdays, anniversaries, and just-because moments.</p>
+    
+    <p id="about-paragraph3">Our team carefully selects the freshest blooms and arranges them with a creative touch to bring a smile to your face and warmth to your heart. Whether you're near or far, let JR Flowers deliver your feelings with style and grace.</p>
+  </div>
+
+  <script>
+    let currentLanguage = localStorage.getItem('language') || 'en';
+
+    function toggleLanguage() {
+      currentLanguage = currentLanguage === 'en' ? 'ar' : 'en';
+      localStorage.setItem('language', currentLanguage);
+      updateTexts();
+    }
+
+    function updateTexts() {
+      const texts = {
+        en: {
+          aboutHeader: "About JR Flowers",
+          paragraph1: "JR Flowers is your go-to online flower shop for premium, handcrafted floral arrangements. We believe flowers are more than just gifts — they're a form of expression, a way to show love, gratitude, and joy.",
+          paragraph2: "Established with love and passion for nature’s beauty, JR Flowers specializes in elegant bouquets and custom designs for every occasion — weddings, birthdays, anniversaries, and just-because moments.",
+          paragraph3: "Our team carefully selects the freshest blooms and arranges them with a creative touch to bring a smile to your face and warmth to your heart. Whether you're near or far, let JR Flowers deliver your feelings with style and grace."
+        },
+        ar: {
+          aboutHeader: "للزهور JR عن متجر ",
+          paragraph1: "JR Flowers هو متجر الزهور الإلكتروني المفضل لديك لتشكيلات الزهور المصممة يدويًا. نحن نؤمن أن الزهور أكثر من مجرد هدايا — فهي وسيلة للتعبير، وطريقة لعرض الحب، والامتنان، والفرح.",
+          paragraph2: "تأسسنا بحب وشغف بجمال الطبيعة، ويتخصص JR Flowers في باقات الزهور الأنيقة والتصاميم المخصصة لكل مناسبة — الزفاف، أعياد الميلاد، الذكرى السنوية، ولحظات المفاجأة.",
+          paragraph3: "فريقنا يختار بعناية أزهارًا طازجة ويقوم بتنسيقها بلمسة إبداعية لتجلب الابتسامة إلى وجهك وتدفئ قلبك. سواء كنت قريبًا أو بعيدًا، دع JR Flowers يوصل مشاعرك بأسلوب وأناقة."
+        }
+      };
+
+      document.getElementById('about-header').innerText = texts[currentLanguage].aboutHeader;
+      document.getElementById('about-paragraph1').innerText = texts[currentLanguage].paragraph1;
+      document.getElementById('about-paragraph2').innerText = texts[currentLanguage].paragraph2;
+      document.getElementById('about-paragraph3').innerText = texts[currentLanguage].paragraph3;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateTexts();
+      document.getElementById('toggle-language').addEventListener('click', toggleLanguage);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Categories - JR Flowers</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+    }
+
+    nav {
+      background-color: #d63384;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #c2185b;
+    }
+
+    .toggle-language {
+      margin-left: 20px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .toggle-language:hover {
+      text-decoration: underline;
+    }
+
+    .content {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #d63384;
+      font-size: 38px;
+      margin-bottom: 30px;
+    }
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .category {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      width: 250px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .category:hover {
+      transform: translateY(-5px);
+    }
+
+    .category img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .category h3 {
+      color: #d63384;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="welcome.html" id="nav-welcome">Welcome</a>
+    <a href="home.html" id="nav-home">Home</a>
+    <a href="Products.html" id="nav-products">Products</a>
+    <a href="products2.html" id="nav-products">Products</a>
+    <a href="about.html" id="nav-about">About Us</a>
+    <a href="Contact.html" id="nav-contact">Contact</a>
+    <a href="cart.html" id="nav-cart">Cart</a>
+    <a href="Checkout.html" id="nav-checkout">Checkout</a>
+    <a href="Categories.html" id="nav-categories">Categories</a>
+    <a href="Offers.Html" id="nav-offers">Offers</a>
+    <a href="Gallery.html" id="nav-gallery">Gallery</a>
+    <a href="faq.html" id="nav-faq">FAQ</a>
+    <a href="TermsandConditions.html" id="nav-terms">Terms</a>>
+    <span class="toggle-language" id="toggle-language">Change Language</span>
+  </nav>
+
+  <div class="content">
+    <h1 id="page-title">Flower Categories</h1>
+    <div class="categories" id="categories-list">
+      <!-- هنا تصنيف المنتجات ديناميكي -->
+    </div>
+  </div>
+
+  <script>
+    const categories = {
+      en: [
+        { name: "Lavender", img: "images/lav.jpg" },
+        { name: "Tulips", img: "images/تنزيل (2).jpg" },
+        { name: "Sunflowers", img: "images/sun.jpg" },
+        { name: "Bouquets", img: "images/minibuc.jpg" }
+      ],
+      ar: [
+        { name: "لافندر", img: "images/lav.jpg" },
+        { name: "توليب", img: "images/تنزيل (2).jpg" },
+        { name: "دوار الشمس", img: "images/sun.jpg" },
+        { name: "باقات زهور", img: "images/minibuc.jpg" }
+      ]
+    };
+
+    let currentLanguage = localStorage.getItem('language') || 'en';
+
+    function renderCategories() {
+      const list = document.getElementById('categories-list');
+      list.innerHTML = '';
+
+      categories[currentLanguage].forEach(cat => {
+        const div = document.createElement('div');
+        div.className = 'category';
+        div.innerHTML = `
+          <img src="${cat.img}" alt="${cat.name}">
+          <h3>${cat.name}</h3>
+        `;
+        list.appendChild(div);
+      });
+
+      document.getElementById('page-title').innerText = currentLanguage === 'en' ? 'Flower Categories' : 'تصنيفات الزهور';
+    }
+
+    function toggleLanguage() {
+      currentLanguage = currentLanguage === 'en' ? 'ar' : 'en';
+      localStorage.setItem('language', currentLanguage);
+      renderCategories();
+    }
+
+    document.getElementById('toggle-language').addEventListener('click', toggleLanguage);
+
+    document.addEventListener('DOMContentLoaded', renderCategories);
+  </script>
+
+</body>
+</html>

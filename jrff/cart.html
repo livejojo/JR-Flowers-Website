@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart - JR Flowers</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+    }
+
+    nav {
+      background-color: #d63384;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #c2185b;
+    }
+
+    .content {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 42px;
+      color: #d63384;
+    }
+
+    table {
+      margin: 30px auto;
+      border-collapse: collapse;
+      width: 80%;
+      background: white;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #f8c1da;
+    }
+
+    td button {
+      background-color: #d63384;
+      color: white;
+      border: none;
+      padding: 4px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    td button:hover {
+      background-color: #c2185b;
+    }
+
+    .toggle-language {
+      margin-left: 20px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .toggle-language:hover {
+      text-decoration: underline;
+    }
+
+    .total {
+      margin-top: 20px;
+      font-size: 28px;
+      color: #d63384;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="welcome.html" id="nav-welcome">Welcome</a>
+    <a href="home.html" id="nav-home">Home</a>
+    <a href="Products.html" id="nav-products">Products</a>
+    <a href="products2.html" id="nav-products">Products</a>
+    <a href="about.html" id="nav-about">About Us</a>
+    <a href="Contact.html" id="nav-contact">Contact</a>
+    <a href="cart.html" id="nav-cart">Cart</a>
+    <a href="Checkout.html" id="nav-checkout">Checkout</a>
+    <a href="Categories.html" id="nav-categories">Categories</a>
+    <a href="Offers.Html" id="nav-offers">Offers</a>
+    <a href="Gallery.html" id="nav-gallery">Gallery</a>
+    <a href="faq.html" id="nav-faq">FAQ</a>
+    <a href="TermsandConditions.html" id="nav-terms">Terms</a>
+    <span class="toggle-language" id="toggle-language">Change Language</span>
+  </nav>
+
+  <div class="content">
+    <h1 id="cart-header">Your Cart</h1>
+
+    <table id="cartTable">
+      <thead>
+        <tr>
+          <th id="item-header">Item</th>
+          <th id="quantity-header">Quantity</th>
+          <th id="price-header">Total Price</th>
+          <th id="action-header">Action</th>
+        </tr>
+      </thead>
+      <tbody id="cartBody">
+        <!-- يتم تعبئته ديناميكياً -->
+      </tbody>
+    </table>
+
+    <div class="total" id="total-text">
+      Total: $<span id="totalAmount">0.00</span>
+    </div>
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const cartBody = document.getElementById('cartBody');
+    const totalAmountSpan = document.getElementById('totalAmount');
+
+    function renderCart() {
+      cartBody.innerHTML = "";
+
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const row = document.createElement('tr');
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>
+            <button onclick="changeQuantity(${index}, -1)">-</button>
+            ${item.quantity}
+            <button onclick="changeQuantity(${index}, 1)">+</button>
+          </td>
+          <td>$${itemTotal.toFixed(2)}</td>
+          <td><button onclick="removeItem(${index})">Remove</button></td>
+        `;
+
+        cartBody.appendChild(row);
+      });
+
+      totalAmountSpan.textContent = total.toFixed(2);
+    }
+
+    function changeQuantity(index, amount) {
+      cart[index].quantity += amount;
+
+      if (cart[index].quantity <= 0) {
+        if (confirm(`Remove ${cart[index].name} from cart?`)) {
+          cart.splice(index, 1);
+        } else {
+          cart[index].quantity = 1;
+        }
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    function removeItem(index) {
+      if (confirm(`Are you sure you want to remove ${cart[index].name}?`)) {
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+      }
+    }
+
+    // اللغات
+    let currentLanguage = localStorage.getItem('language') || 'en';
+
+    function toggleLanguage() {
+      currentLanguage = currentLanguage === 'en' ? 'ar' : 'en';
+      localStorage.setItem('language', currentLanguage);
+      updateTexts();
+    }
+
+    function updateTexts() {
+      const texts = {
+        en: {
+          cartHeader: "Your Cart",
+          itemHeader: "Item",
+          quantityHeader: "Quantity",
+          priceHeader: "Total Price",
+          actionHeader: "Action",
+          totalLabel: "Total: $"
+        },
+        ar: {
+          cartHeader: "سلة التسوق",
+          itemHeader: "المنتج",
+          quantityHeader: "الكمية",
+          priceHeader: "السعر الكلي",
+          actionHeader: "الإجراء",
+          totalLabel: "الإجمالي: $"
+        }
+      };
+
+      const lang = texts[currentLanguage];
+
+      document.getElementById('cart-header').innerText = lang.cartHeader;
+      document.getElementById('item-header').innerText = lang.itemHeader;
+      document.getElementById('quantity-header').innerText = lang.quantityHeader;
+      document.getElementById('price-header').innerText = lang.priceHeader;
+      document.getElementById('action-header').innerText = lang.actionHeader;
+
+      // فقط غير النص قبل span بدون حذف span نفسه
+      document.getElementById('total-text').childNodes[0].nodeValue = lang.totalLabel + " ";
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateTexts();
+      renderCart();
+      document.getElementById('toggle-language').addEventListener('click', toggleLanguage);
+    });
+  </script>
+
+</body>
+</html>

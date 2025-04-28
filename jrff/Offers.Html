@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special Offers - JR Flowers</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+    }
+
+    nav {
+      background-color: #d63384;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #c2185b;
+    }
+
+    .content {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 38px;
+      color: #d63384;
+      margin-bottom: 40px;
+    }
+
+    .offers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .offer {
+      background-color: white;
+      padding: 20px;
+      width: 280px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .offer:hover {
+      transform: scale(1.03);
+    }
+
+    .offer img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .offer h3 {
+      color: #d63384;
+      margin-top: 15px;
+    }
+
+    .offer p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .offer span {
+      color: #d63384;
+      font-weight: bold;
+      font-size: 18px;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .language-switcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #28a745;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="welcome.html" id="nav-welcome">Welcome</a>
+    <a href="home.html" id="nav-home">Home</a>
+    <a href="Products.html" id="nav-products">Products</a>
+    <a href="products2.html" id="nav-products">Products</a>
+    <a href="about.html" id="nav-about">About Us</a>
+    <a href="Contact.html" id="nav-contact">Contact</a>
+    <a href="cart.html" id="nav-cart">Cart</a>
+    <a href="Checkout.html" id="nav-checkout">Checkout</a>
+    <a href="Categories.html" id="nav-categories">Categories</a>
+    <a href="Offers.Html" id="nav-offers">Offers</a>
+    <a href="Gallery.html" id="nav-gallery">Gallery</a>
+    <a href="faq.html" id="nav-faq">FAQ</a>
+    <a href="TermsandConditions.html" id="nav-terms">Terms</a>
+  </nav>
+
+  <!-- زر تبديل اللغة -->
+  <div class="language-switcher" onclick="switchLanguage()">العربية</div>
+
+  <div class="content" id="content">
+    <h1>Special Offers</h1>
+    <div class="offers">
+      <div class="offer">
+        <img src="images/buc.jpg" alt="Rose Bouquet">
+        <h3>Buy 1 Get 1 Free</h3>
+        <p>Get two rose bouquets for the price of one. Limited time only!</p>
+        <span>$25</span>
+      </div>
+
+      <div class="offer">
+        <img src="images/تنزيل (2).jpg" alt="Tulips">
+        <h3>Spring Tulips Deal</h3>
+        <p>20% off on all tulip arrangements during spring!</p>
+        <span>$20</span>
+      </div>
+
+      <div class="offer">
+        <img src="images/sun.jpg" alt="Sunflower Pack">
+        <h3>Sunshine Pack</h3>
+        <p>Combo of 3 sunflower bunches + greeting card.</p>
+        <span>$35</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchLanguage() {
+      var content = document.getElementById("content");
+      var languageSwitcher = document.querySelector(".language-switcher");
+
+      if (languageSwitcher.innerHTML === "العربية") {
+        languageSwitcher.innerHTML = "English";
+        content.innerHTML = `
+          <h1>عروض خاصة</h1>
+          <div class="offers">
+            <div class="offer">
+              <img src="images/buc.jpg" alt="باقة ورد">
+              <h3>اشترِ 1 واحصل على 1 مجانًا</h3>
+              <p>احصل على باقتين من الورد بنفس سعر باقة واحدة. العرض لفترة محدودة!</p>
+              <span>$25</span>
+            </div>
+
+            <div class="offer">
+              <img src="images/تنزيل (2).jpg" alt="توليب">
+              <h3>عرض توليب الربيع</h3>
+              <p>خصم 20% على جميع ترتيبات التوليب خلال فصل الربيع!</p>
+              <span>$20</span>
+            </div>
+
+            <div class="offer">
+              <img src="images/sun.jpg" alt="باقة دوار الشمس">
+              <h3>باقة الشمس</h3>
+              <p>مجموعة من 3 باقات دوار الشمس + بطاقة تهنئة.</p>
+              <span>$35</span>
+            </div>
+          </div>
+        `;
+      } else {
+        languageSwitcher.innerHTML = "العربية";
+        content.innerHTML = `
+          <h1>Special Offers</h1>
+          <div class="offers">
+            <div class="offer">
+              <img src="images/buc.jpg" alt="Rose Bouquet">
+              <h3>Buy 1 Get 1 Free</h3>
+              <p>Get two rose bouquets for the price of one. Limited time only!</p>
+              <span>$25</span>
+            </div>
+
+            <div class="offer">
+              <img src="images/تنزيل (2).jpg" alt="Tulips">
+              <h3>Spring Tulips Deal</h3>
+              <p>20% off on all tulip arrangements during spring!</p>
+              <span>$20</span>
+            </div>
+
+            <div class="offer">
+              <img src="images/sun.jpg" alt="Sunflower Pack">
+              <h3>Sunshine Pack</h3>
+              <p>Combo of 3 sunflower bunches + greeting card.</p>
+              <span>$35</span>
+            </div>
+          </div>
+        `;
+      }
+    }
+  </script>
+
+</body>
+</html>

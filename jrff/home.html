@@ -1,0 +1,111 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home - JR Flowers</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    .home-hero {
+      position: relative;
+      background-image: url('images/btff.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4); /* شفاف أسود خفيف */
+      z-index: 1;
+    }
+    .home-content {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
+    .home-content h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    .home-content p {
+      font-size: 1.5em;
+      margin-bottom: 30px;
+    }
+    .home-content .button {
+      padding: 12px 25px;
+      background-color: #e91e63;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1.2em;
+      transition: background-color 0.3s ease;
+    }
+    .home-content .button:hover {
+      background-color: #ad1457;
+    }
+    nav {
+      background-color: #d63384;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    nav a:hover {
+      background-color: #c2185b;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="welcome.html" id="nav-welcome">Welcome</a>
+    <a href="home.html" id="nav-home">Home</a>
+    <a href="Products.html" id="nav-products">Products</a>
+    <a href="products2.html" id="nav-products">Products</a>
+    <a href="about.html" id="nav-about">About Us</a>
+    <a href="Contact.html" id="nav-contact">Contact</a>
+    <a href="cart.html" id="nav-cart">Cart</a>
+    <a href="Checkout.html" id="nav-checkout">Checkout</a>
+    <a href="Categories.html" id="nav-categories">Categories</a>
+    <a href="Offers.Html" id="nav-offers">Offers</a>
+    <a href="Gallery.html" id="nav-gallery">Gallery</a>
+    <a href="faq.html" id="nav-faq">FAQ</a>
+    <a href="TermsandConditions.html" id="nav-terms">Terms</a>
+  </nav>
+
+  <div class="home-hero">
+    <div class="overlay"></div> <!-- طبقة شفافة -->
+    <div class="home-content">
+      <h1>JR Flowers</h1>
+      <p>Discover the most elegant flowers and charming bouquets!</p>
+      <a href="products.html" class="button">Shop Now</a>
+    </div>
+  </div>
+
+</body>
+</html>

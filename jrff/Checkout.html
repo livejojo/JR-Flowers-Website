@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout - JR Flowers</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+    }
+
+    nav {
+      background-color: #d63384;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #c2185b;
+    }
+
+    .toggle-language {
+      margin-left: 20px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .toggle-language:hover {
+      text-decoration: underline;
+    }
+
+    .content {
+      max-width: 600px;
+      margin: auto;
+      padding: 60px 20px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 {
+      color: #d63384;
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #d63384;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #c2185b;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="welcome.html" id="nav-welcome">Welcome</a>
+    <a href="home.html" id="nav-home">Home</a>
+    <a href="Products.html" id="nav-products">Products</a>
+    <a href="products2.html" id="nav-products">Products</a>
+    <a href="about.html" id="nav-about">About Us</a>
+    <a href="Contact.html" id="nav-contact">Contact</a>
+    <a href="cart.html" id="nav-cart">Cart</a>
+    <a href="Checkout.html" id="nav-checkout">Checkout</a>
+    <a href="Categories.html" id="nav-categories">Categories</a>
+    <a href="Offers.Html" id="nav-offers">Offers</a>
+    <a href="Gallery.html" id="nav-gallery">Gallery</a>
+    <a href="faq.html" id="nav-faq">FAQ</a>
+    <a href="TermsandConditions.html" id="nav-terms">Terms</a>
+    <span class="toggle-language" id="toggle-language">Change Language</span>
+  </nav>
+
+  <div class="content">
+    <h1 id="page-title">Checkout</h1>
+    <form onsubmit="submitOrder(event)">
+      <input id="fullName" type="text" placeholder="Full Name" required />
+      <input id="address" type="text" placeholder="Address" required />
+      <input id="city" type="text" placeholder="City" required />
+      <input id="postalCode" type="text" placeholder="Postal Code" required />
+      <input id="phoneNumber" type="tel" placeholder="Phone Number" required />
+      <input id="email" type="email" placeholder="Email Address" required />
+      <button type="submit">Place Order</button>
+    </form>
+  </div>
+
+  <script>
+    const categories = {
+      en: {
+        pageTitle: "Checkout",
+        fullName: "Full Name",
+        address: "Address",
+        city: "City",
+        postalCode: "Postal Code",
+        phoneNumber: "Phone Number",
+        email: "Email Address",
+        submitButton: "Place Order"
+      },
+      ar: {
+        pageTitle: "إتمام الطلب",
+        fullName: "الاسم الكامل",
+        address: "العنوان",
+        city: "المدينة",
+        postalCode: "الرمز البريدي",
+        phoneNumber: "رقم الهاتف",
+        email: "البريد الإلكتروني",
+        submitButton: "تقديم الطلب"
+      }
+    };
+
+    let currentLanguage = localStorage.getItem('language') || 'en';
+
+    function renderPage() {
+      document.getElementById('page-title').innerText = categories[currentLanguage].pageTitle;
+      document.getElementById('fullName').placeholder = categories[currentLanguage].fullName;
+      document.getElementById('address').placeholder = categories[currentLanguage].address;
+      document.getElementById('city').placeholder = categories[currentLanguage].city;
+      document.getElementById('postalCode').placeholder = categories[currentLanguage].postalCode;
+      document.getElementById('phoneNumber').placeholder = categories[currentLanguage].phoneNumber;
+      document.getElementById('email').placeholder = categories[currentLanguage].email;
+      document.querySelector('button').innerText = categories[currentLanguage].submitButton;
+    }
+
+    function toggleLanguage() {
+      currentLanguage = currentLanguage === 'en' ? 'ar' : 'en';
+      localStorage.setItem('language', currentLanguage);
+      renderPage();
+    }
+
+    document.getElementById('toggle-language').addEventListener('click', toggleLanguage);
+
+    document.addEventListener('DOMContentLoaded', renderPage);
+
+    function submitOrder(event) {
+      event.preventDefault();
+
+      const orderInfo = {
+        fullName: document.getElementById('fullName').value,
+        address: document.getElementById('address').value,
+        city: document.getElementById('city').value,
+        postalCode: document.getElementById('postalCode').value,
+        phoneNumber: document.getElementById('phoneNumber').value,
+        email: document.getElementById('email').value,
+      };
+
+      localStorage.setItem('orderInfo', JSON.stringify(orderInfo));
+
+      // بعد إرسال الطلب يجب توجيه المستخدم إلى صفحة "شكرًا"
+      window.location.href = 'thankyou.html';
+    }
+  </script>
+
+</body>
+</html>

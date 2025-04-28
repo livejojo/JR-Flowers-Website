@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact - JR Flowers</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+    }
+    nav {
+      background-color: #d63384;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+    nav a:hover {
+      background-color: #c2185b;
+    }
+    .content {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    h1 {
+      font-size: 42px;
+      color: #d63384;
+    }
+    form {
+      margin-top: 30px;
+    }
+    input, textarea {
+      width: 300px;
+      padding: 10px;
+      margin: 10px auto;
+      display: block;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background-color: #d63384;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #c2185b;
+    }
+    .toggle-language {
+      margin-left: 20px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .toggle-language:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="welcome.html" id="nav-welcome">Welcome</a>
+    <a href="home.html" id="nav-home">Home</a>
+    <a href="Products.html" id="nav-products">Products</a>
+    <a href="products2.html" id="nav-products">Products</a>
+    <a href="about.html" id="nav-about">About Us</a>
+    <a href="Contact.html" id="nav-contact">Contact</a>
+    <a href="cart.html" id="nav-cart">Cart</a>
+    <a href="Checkout.html" id="nav-checkout">Checkout</a>
+    <a href="Categories.html" id="nav-categories">Categories</a>
+    <a href="Offers.Html" id="nav-offers">Offers</a>
+    <a href="Gallery.html" id="nav-gallery">Gallery</a>
+    <a href="faq.html" id="nav-faq">FAQ</a>
+    <a href="TermsandConditions.html" id="nav-terms">Terms</a>
+    <span class="toggle-language" id="toggle-language">Change Language</span>
+  </nav>
+
+  <div class="content">
+    <h1 id="page-title">Contact Us</h1>
+    <form>
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea rows="5" id="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <script>
+    const texts = {
+      en: {
+        welcome: "Welcome",
+        home: "Home",
+        products: "Products",
+        about: "About Us",
+        contact: "Contact",
+        cart: "Cart",
+        checkout: "Checkout",
+        categories: "Categories",
+        offers: "Offers",
+        gallery: "Gallery",
+        faq: "FAQ",
+        terms: "Terms",
+        pageTitle: "Contact Us",
+        namePlaceholder: "Your Name",
+        emailPlaceholder: "Your Email",
+        messagePlaceholder: "Your Message",
+        sendMessage: "Send Message",
+        changeLanguage: "Change Language"
+      },
+      ar: {
+        welcome: "أهلاً وسهلاً",
+        home: "الرئيسية",
+        products: "المنتجات",
+        about: "عنّا",
+        contact: "اتصل بنا",
+        cart: "السلة",
+        checkout: "الدفع",
+        categories: "التصنيفات",
+        offers: "العروض",
+        gallery: "المعرض",
+        faq: "الأسئلة الشائعة",
+        terms: "الشروط",
+        pageTitle: "اتصل بنا",
+        namePlaceholder: "اسمك الكامل",
+        emailPlaceholder: "بريدك الإلكتروني",
+        messagePlaceholder: "رسالتك",
+        sendMessage: "إرسال الرسالة",
+        changeLanguage: "تغيير اللغة"
+      }
+    };
+
+    let currentLanguage = localStorage.getItem('language') || 'en';
+
+    function setLanguage(language) {
+      localStorage.setItem('language', language);
+      currentLanguage = language;
+      updateText();
+    }
+
+    function updateText() {
+      const langTexts = texts[currentLanguage];
+
+      document.getElementById('page-title').innerText = langTexts.pageTitle;
+      document.getElementById('name').placeholder = langTexts.namePlaceholder;
+      document.getElementById('email').placeholder = langTexts.emailPlaceholder;
+      document.getElementById('message').placeholder = langTexts.messagePlaceholder;
+      document.querySelector('button').innerText = langTexts.sendMessage;
+      document.getElementById('toggle-language').innerText = langTexts.changeLanguage;
+
+      document.getElementById('welcome-link').innerText = langTexts.welcome;
+      document.getElementById('home-link').innerText = langTexts.home;
+      document.getElementById('products-link').innerText = langTexts.products;
+      document.getElementById('about-link').innerText = langTexts.about;
+      document.getElementById('contact-link').innerText = langTexts.contact;
+      document.getElementById('cart-link').innerText = langTexts.cart;
+      document.getElementById('checkout-link').innerText = langTexts.checkout;
+      document.getElementById('categories-link').innerText = langTexts.categories;
+      document.getElementById('offers-link').innerText = langTexts.offers;
+      document.getElementById('gallery-link').innerText = langTexts.gallery;
+      document.getElementById('faq-link').innerText = langTexts.faq;
+      document.getElementById('terms-link').innerText = langTexts.terms;
+    }
+
+    document.getElementById('toggle-language').addEventListener('click', function() {
+      setLanguage(currentLanguage === 'en' ? 'ar' : 'en');
+    });
+
+    // Initialize the page with the selected language
+    setLanguage(currentLanguage);
+  </script>
+</body>
+</html>

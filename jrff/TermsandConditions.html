@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms & Conditions - JR Flowers</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+      background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/roses.png');
+      background-repeat: repeat;
+      background-size: 200px;
+    }
+
+    .content {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: 50px auto;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #d63384;
+      text-align: center;
+      font-size: 38px;
+      margin-bottom: 40px;
+      text-shadow: 1px 1px 3px #f8c1d9;
+    }
+
+    h3 {
+      color: #d63384;
+      margin-top: 30px;
+    }
+
+    p {
+      color: #555;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    nav {
+      background-color: #d63384;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #c2185b;
+      transform: scale(1.05);
+    }
+
+    /* زر تغيير اللغة */
+    .language-switcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #28a745;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="welcome.html" id="nav-welcome">Welcome</a>
+    <a href="home.html" id="nav-home">Home</a>
+    <a href="Products.html" id="nav-products">Products</a>
+    <a href="products2.html" id="nav-products">Products</a>
+    <a href="about.html" id="nav-about">About Us</a>
+    <a href="Contact.html" id="nav-contact">Contact</a>
+    <a href="cart.html" id="nav-cart">Cart</a>
+    <a href="Checkout.html" id="nav-checkout">Checkout</a>
+    <a href="Categories.html" id="nav-categories">Categories</a>
+    <a href="Offers.Html" id="nav-offers">Offers</a>
+    <a href="Gallery.html" id="nav-gallery">Gallery</a>
+    <a href="faq.html" id="nav-faq">FAQ</a>
+    <a href="TermsandConditions.html" id="nav-terms">Terms</a>
+  </nav>
+
+  <!-- زر تبديل اللغة -->
+  <div class="language-switcher" onclick="switchLanguage()">العربية</div>
+
+  <div class="content" id="content">
+    <h1>Terms & Conditions</h1>
+
+    <h3>1. Order Policy</h3>
+    <p>All orders must be placed at least 4 hours in advance for same-day delivery. We do not guarantee exact delivery time.</p>
+
+    <h3>2. Payment</h3>
+    <p>We accept all major credit cards and online payments. Cash on delivery is not available.</p>
+
+    <h3>3. Cancellations</h3>
+    <p>Orders may be canceled up to 2 hours after confirmation. After that, the order is final and non-refundable.</p>
+
+    <h3>4. Returns & Refunds</h3>
+    <p>We only offer refunds in case of damage or incorrect product delivered. Proof must be provided within 24 hours.</p>
+
+    <h3>5. Privacy</h3>
+    <p>Your information is kept private and will not be shared with third parties without your consent.</p>
+
+    <h3>6. Contact</h3>
+    <p>If you have questions about these terms, please contact us via the Contact Us page.</p>
+  </div>
+
+  <script>
+    function switchLanguage() {
+      var content = document.getElementById("content");
+      var languageSwitcher = document.querySelector(".language-switcher");
+
+      if (languageSwitcher.innerHTML === "العربية") {
+        languageSwitcher.innerHTML = "English";
+        content.innerHTML = `
+          <h1>الشروط والأحكام</h1>
+          <h3>1. سياسة الطلب</h3>
+          <p>يجب تقديم جميع الطلبات قبل 4 ساعات على الأقل للتوصيل في نفس اليوم. لا نضمن وقت التوصيل الدقيق.</p>
+          <h3>2. الدفع</h3>
+          <p>نقبل جميع بطاقات الائتمان الرئيسية والمدفوعات عبر الإنترنت. الدفع عند الاستلام غير متاح.</p>
+          <h3>3. الإلغاء</h3>
+          <p>يمكن إلغاء الطلبات في غضون ساعتين من التأكيد. بعد ذلك، يصبح الطلب نهائيًا وغير قابل للاسترداد.</p>
+          <h3>4. المرتجعات والاسترداد</h3>
+          <p>نقدم استردادًا فقط في حالة تلف المنتج أو تسليم منتج خاطئ. يجب تقديم إثبات في غضون 24 ساعة.</p>
+          <h3>5. الخصوصية</h3>
+          <p>سيتم الحفاظ على معلوماتك بشكل خاص ولن يتم مشاركتها مع أطراف ثالثة دون موافقتك.</p>
+          <h3>6. الاتصال</h3>
+          <p>إذا كانت لديك أسئلة حول هذه الشروط، يرجى الاتصال بنا عبر صفحة "اتصل بنا".</p>
+        `;
+      } else {
+        languageSwitcher.innerHTML = "العربية";
+        content.innerHTML = `
+          <h1>Terms & Conditions</h1>
+          <h3>1. Order Policy</h3>
+          <p>All orders must be placed at least 4 hours in advance for same-day delivery. We do not guarantee exact delivery time.</p>
+          <h3>2. Payment</h3>
+          <p>We accept all major credit cards and online payments. Cash on delivery is not available.</p>
+          <h3>3. Cancellations</h3>
+          <p>Orders may be canceled up to 2 hours after confirmation. After that, the order is final and non-refundable.</p>
+          <h3>4. Returns & Refunds</h3>
+          <p>We only offer refunds in case of damage or incorrect product delivered. Proof must be provided within 24 hours.</p>
+          <h3>5. Privacy</h3>
+          <p>Your information is kept private and will not be shared with third parties without your consent.</p>
+          <h3>6. Contact</h3>
+          <p>If you have questions about these terms, please contact us via the Contact Us page.</p>
+        `;
+      }
+    }
+  </script>
+
+</body>
+</html>
